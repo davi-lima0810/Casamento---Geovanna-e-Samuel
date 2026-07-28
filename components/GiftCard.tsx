@@ -116,38 +116,40 @@ export default function GiftCard({
   const icone = icones[presente.nome] || "🎁";
 
   return (
-    <div className="group rounded-3xl border border-rose-100 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
+    <div className="group rounded-2xl sm:rounded-3xl border border-rose-100 bg-white p-4 sm:p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
 
-      <div className="flex items-center justify-between gap-5">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
-        {/* Esquerda */}
-        <div className="flex items-center gap-5">
+        {/* Lado esquerdo */}
+        <div className="flex items-center gap-4 min-w-0 flex-1">
 
-          <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-100 to-pink-100 text-3xl transition duration-300 group-hover:scale-110">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-100 to-pink-100 text-3xl transition duration-300 group-hover:scale-110 sm:h-16 sm:w-16">
             {icone}
           </div>
 
-          <div>
-            <h3 className="text-xl font-bold text-gray-800">
+          <div className="min-w-0 flex-1">
+
+            <h3 className="break-words text-lg font-bold text-gray-800 sm:text-xl">
               {presente.nome}
             </h3>
 
             <p className="mt-1 text-sm text-gray-500">
               Presente para o novo lar
             </p>
+
           </div>
 
         </div>
 
-        {/* Direita */}
+        {/* Lado direito */}
         {presente.reservado ? (
-          <div className="rounded-full bg-emerald-100 px-5 py-2 font-semibold text-emerald-700 shadow">
+          <div className="w-full sm:w-auto rounded-full bg-emerald-100 px-5 py-3 text-center font-semibold text-emerald-700 shadow">
             ✅ Escolhido
           </div>
         ) : (
           <button
             onClick={() => onEscolher(presente.nome)}
-            className="cursor-pointer rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
+            className="w-full sm:w-auto cursor-pointer rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 px-6 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
           >
             Escolher
           </button>
