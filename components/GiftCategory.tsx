@@ -31,55 +31,65 @@ export default function GiftCategory({
   const titulo = categoria.replace(/^[^\s]+\s/, "");
 
   return (
-    <div className="overflow-hidden rounded-[34px] border border-rose-100 bg-white shadow-xl transition-all duration-300 hover:shadow-2xl">
-      {/* Cabeçalho */}
+    <div className="overflow-hidden rounded-3xl border border-rose-100 bg-white shadow-xl transition hover:shadow-2xl">
+
       <button
         onClick={() => setAberto(!aberto)}
-        className="w-full cursor-pointer bg-gradient-to-r from-rose-50 via-pink-50 to-rose-50 px-8 py-7 transition hover:from-rose-100 hover:to-pink-100"
+        className="w-full cursor-pointer bg-gradient-to-r from-rose-50 via-pink-50 to-rose-50 p-5 sm:p-7"
       >
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-5">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-3xl text-white shadow-lg">
+        <div className="flex items-start justify-between gap-4">
+
+          {/* ESQUERDA */}
+          <div className="flex flex-1 items-start gap-4 min-w-0">
+
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-2xl text-white shadow-lg sm:h-16 sm:w-16 sm:text-3xl">
               {emoji}
             </div>
 
-            <div className="text-left">
-              <h2 className="text-2xl font-bold text-gray-800">
+            <div className="min-w-0 text-left">
+
+              <h2 className="break-words text-2xl sm:text-3xl font-bold text-gray-800">
                 {titulo}
               </h2>
 
               <p className="mt-1 text-sm text-gray-500">
                 {presentes.length} presentes disponíveis
               </p>
+
+              <div className="mt-3">
+
+                {escolhidos === presentes.length ? (
+                  <span className="inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs sm:text-sm font-semibold text-emerald-600">
+                    ✅ Completo
+                  </span>
+                ) : (
+                  <span className="inline-flex rounded-full bg-rose-100 px-3 py-1 text-xs sm:text-sm font-semibold text-rose-600">
+                    ❤️ {escolhidos} escolhidos
+                  </span>
+                )}
+
+              </div>
+
             </div>
+
           </div>
 
-          <div className="flex items-center gap-3">
-            {escolhidos === presentes.length ? (
-              <span className="rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-600">
-                ✅ Completo
-              </span>
-            ) : (
-              <span className="rounded-full bg-rose-100 px-4 py-2 text-sm font-semibold text-rose-600">
-                ❤️ {escolhidos} escolhidos
-              </span>
-            )}
-
-            <div
-              className={`flex h-12 w-12 items-center justify-center rounded-full bg-white text-xl text-rose-500 shadow-md transition-transform duration-300 ${
-                aberto ? "rotate-180" : ""
-              }`}
-            >
-              ⌃
-            </div>
+          {/* SETA */}
+          <div
+            className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white text-lg text-rose-500 shadow-md transition-transform duration-300 sm:h-12 sm:w-12 sm:text-xl ${
+              aberto ? "rotate-180" : ""
+            }`}
+          >
+            ⌃
           </div>
+
         </div>
+
       </button>
 
-      {/* Lista */}
       {aberto && (
-        <div className="bg-white p-6">
-          <div className="space-y-5">
+        <div className="bg-white p-4 sm:p-6">
+          <div className="space-y-4 sm:space-y-5">
             {presentes.map((presente) => (
               <GiftCard
                 key={presente.id}
@@ -90,6 +100,7 @@ export default function GiftCategory({
           </div>
         </div>
       )}
+
     </div>
   );
 }

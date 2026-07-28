@@ -39,8 +39,7 @@ export default function GiftList() {
       return;
     }
 
-    const mensagem = encodeURIComponent(
-`Olá Geovanna e Samuel! 💕
+    const mensagem = encodeURIComponent(`Olá Geovanna e Samuel! 💕
 
 Meu nome é ${nome}.
 
@@ -48,8 +47,7 @@ Gostaria de presentear vocês com:
 
 🎁 ${presenteSelecionado}
 
-Reservem esse presente para mim. ❤️`
-    );
+Reservem esse presente para mim. ❤️`);
 
     window.open(
       `https://wa.me/${numero}?text=${mensagem}`,
@@ -62,52 +60,57 @@ Reservem esse presente para mim. ❤️`
 
   return (
     <>
-      <section className="mt-12">
+      <section className="mt-10 sm:mt-12">
 
+        {/* Cabeçalho */}
         <div className="text-center">
 
-          <span className="rounded-full bg-rose-100 px-5 py-2 text-sm font-semibold text-rose-500">
+          <span className="inline-flex rounded-full bg-rose-100 px-4 py-2 text-xs sm:text-sm font-semibold text-rose-500">
             🎁 Lista de Presentes
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold text-gray-800">
+          <h2 className="mt-5 text-3xl sm:text-4xl font-bold text-gray-800">
             Escolha um presente
           </h2>
 
-          <p className="mt-4 text-gray-500">
+          <p className="mx-auto mt-4 max-w-xl px-2 text-sm sm:text-base leading-7 text-gray-500">
             Seu carinho fará parte do nosso novo lar. ❤️
           </p>
 
         </div>
 
         {/* Pesquisa */}
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
 
           <input
             type="text"
             placeholder="🔍 Pesquisar presente..."
             value={pesquisa}
             onChange={(e) => setPesquisa(e.target.value)}
-            className="w-full rounded-2xl border border-rose-200 bg-white px-6 py-4 shadow-md outline-none transition focus:border-rose-500"
+            className="w-full rounded-2xl border border-rose-200 bg-white px-5 py-3 text-base shadow-md outline-none transition focus:border-rose-500 focus:ring-2 focus:ring-rose-200"
           />
 
         </div>
 
         {/* Contador */}
-        <div className="mt-5 flex items-center justify-between rounded-2xl bg-rose-50 px-6 py-4">
+        <div className="mt-5 rounded-2xl bg-rose-50 p-5 shadow-sm">
 
-          <span className="font-medium text-gray-600">
-            {totalPresentes} presentes encontrados
-          </span>
+          <div className="flex flex-col items-center gap-2 text-center sm:flex-row sm:justify-between">
 
-          <span className="font-semibold text-rose-500">
-            ❤️ Obrigado pelo carinho
-          </span>
+            <span className="text-lg font-semibold text-gray-700">
+              {totalPresentes} presentes encontrados
+            </span>
+
+            <span className="font-semibold text-rose-500">
+              ❤️ Obrigado pelo carinho
+            </span>
+
+          </div>
 
         </div>
 
         {/* Categorias */}
-        <div className="mt-8 space-y-8">
+        <div className="mt-8 space-y-6 sm:space-y-8">
 
           {categoriasFiltradas.map((categoria) => (
 
@@ -125,28 +128,27 @@ Reservem esse presente para mim. ❤️`
       </section>
 
       {/* Modal */}
-
       {modalAberto && (
 
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-5 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm">
 
-          <div className="w-full max-w-md rounded-[35px] bg-white p-8 shadow-2xl">
+          <div className="w-full max-w-md rounded-3xl bg-white p-6 sm:p-8 shadow-2xl animate-[fadeIn_.25s_ease]">
 
             <div className="text-center">
 
-              <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-rose-100 text-4xl">
+              <div className="mx-auto flex h-16 w-16 sm:h-20 sm:w-20 items-center justify-center rounded-full bg-rose-100 text-3xl sm:text-4xl">
                 🎁
               </div>
 
-              <h2 className="mt-5 text-3xl font-bold text-gray-800">
+              <h2 className="mt-5 text-2xl sm:text-3xl font-bold text-gray-800">
                 Confirmar Presente
               </h2>
 
-              <p className="mt-3 text-gray-500">
+              <p className="mt-3 text-sm sm:text-base text-gray-500">
                 Você escolheu
               </p>
 
-              <h3 className="mt-2 text-2xl font-bold text-rose-500">
+              <h3 className="mt-2 break-words text-xl sm:text-2xl font-bold text-rose-500">
                 {presenteSelecionado}
               </h3>
 
@@ -157,21 +159,21 @@ Reservem esse presente para mim. ❤️`
               placeholder="Digite seu nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
-              className="mt-8 w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-rose-500"
+              className="mt-8 w-full rounded-2xl border border-gray-300 px-5 py-4 outline-none transition focus:border-rose-500 focus:ring-2 focus:ring-rose-200"
             />
 
-            <div className="mt-8 flex gap-4">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
               <button
                 onClick={() => setModalAberto(false)}
-                className="flex-1 cursor-pointer rounded-2xl border border-gray-300 py-4 font-semibold transition hover:bg-gray-100"
+                className="w-full rounded-2xl border border-gray-300 py-4 font-semibold transition hover:bg-gray-100"
               >
                 Cancelar
               </button>
 
               <button
                 onClick={confirmarEscolha}
-                className="flex-1 cursor-pointer rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 py-4 font-semibold text-white shadow-lg transition hover:scale-105"
+                className="w-full rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 py-4 font-semibold text-white shadow-lg transition hover:scale-[1.02]"
               >
                 Confirmar
               </button>
