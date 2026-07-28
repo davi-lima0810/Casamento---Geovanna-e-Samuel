@@ -5,7 +5,7 @@ import { gifts } from "@/data/gifts";
 import GiftCategory from "@/components/GiftCategory";
 
 export default function GiftList() {
-  const numero = "5511915815458";
+  const numero = "5511984916825";
 
   const [modalAberto, setModalAberto] = useState(false);
   const [nome, setNome] = useState("");
