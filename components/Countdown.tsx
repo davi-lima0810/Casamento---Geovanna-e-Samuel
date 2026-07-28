@@ -47,7 +47,7 @@ export default function Countdown() {
   ];
 
   return (
-    <section className="relative overflow-hidden rounded-[35px] bg-gradient-to-br from-rose-500 via-pink-500 to-rose-400 p-8 shadow-[0_25px_70px_rgba(244,63,94,.35)]">
+    <section className="relative overflow-hidden rounded-[28px] sm:rounded-[35px] bg-gradient-to-br from-rose-500 via-pink-500 to-rose-400 px-5 py-8 sm:p-8 shadow-[0_25px_70px_rgba(244,63,94,.35)]">
 
       {/* Brilhos */}
       <div className="absolute -left-20 -top-20 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
@@ -57,11 +57,11 @@ export default function Countdown() {
 
         <div className="text-center">
 
-          <p className="text-sm uppercase tracking-[5px] text-rose-100">
+          <p className="text-xs sm:text-sm uppercase tracking-[3px] sm:tracking-[5px] text-rose-100">
             Contagem Regressiva
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold text-white">
+          <h2 className="mt-3 text-2xl sm:text-3xl font-bold text-white">
             ⏳ Faltam apenas
           </h2>
 
@@ -69,21 +69,20 @@ export default function Countdown() {
 
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 sm:gap-4">
 
           {itens.map((item) => (
             <div
               key={item.texto}
-              className="group rounded-3xl border border-white/20 bg-white/15 p-6 text-center backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:bg-white/20"
+              className="rounded-2xl sm:rounded-3xl border border-white/20 bg-white/15 p-4 sm:p-6 text-center backdrop-blur-md transition duration-300 hover:bg-white/20"
             >
-
-              <p className="text-5xl font-extrabold text-white drop-shadow-lg transition group-hover:scale-110">
+              <p className="text-3xl sm:text-5xl font-extrabold text-white">
                 {String(item.valor).padStart(2, "0")}
               </p>
 
-              <div className="mx-auto my-4 h-px w-10 bg-white/30" />
+              <div className="mx-auto my-3 sm:my-4 h-px w-10 bg-white/30" />
 
-              <p className="text-sm font-semibold uppercase tracking-[3px] text-rose-100">
+              <p className="text-[11px] sm:text-sm font-semibold uppercase tracking-[2px] sm:tracking-[3px] text-rose-100">
                 {item.texto}
               </p>
 
@@ -92,7 +91,7 @@ export default function Countdown() {
 
         </div>
 
-        <p className="mt-8 text-center text-sm text-rose-100">
+        <p className="mt-6 sm:mt-8 text-center text-xs sm:text-sm text-rose-100">
           Estamos contando os dias para celebrar esse momento com você. 💕
         </p>
 
